@@ -17,3 +17,13 @@ symbol board::get(int index) const
     if(index < 1 || index > 9) throw out_of_range("Board index out of range.");
     return contents[index - 1];
 }
+
+bool board::is_full() const
+{
+    for(auto square : contents)
+    {
+        if(square == symbol::BLANK)
+            return false;
+    }
+    return true;
+}

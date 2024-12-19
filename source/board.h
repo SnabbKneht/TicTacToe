@@ -10,6 +10,7 @@ class board
         void clear() { for(symbol &s : contents) s = symbol::BLANK; }
         void set(int index, symbol s);
         symbol get(int index) const;
+        bool is_full() const;
 
     private:
         std::vector<symbol> contents = std::vector(9, symbol::BLANK);

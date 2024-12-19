@@ -3,6 +3,7 @@
 
 #include "symbol.h"
 #include "board.h"
+#include "game_state.h"
 
 class board;
 
@@ -13,7 +14,7 @@ class game
         explicit game(symbol starting_player) : m_starting_player(starting_player), m_next_player(starting_player) {}
 
         // returns symbol that won or blank if the game is not finished
-        symbol get_winner() const;
+        game_state get_game_state() const;
         void make_turn(int index);
         void reset();
         const board & get_board() const { return m_board; }

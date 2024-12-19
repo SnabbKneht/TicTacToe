@@ -1,7 +1,7 @@
 #include "game.h"
 #include <stdexcept>
 
-symbol game::get_winner() const
+game_state game::get_game_state() const
 {
     symbol a = m_board.get(1);
     symbol b = m_board.get(2);
@@ -13,21 +13,31 @@ symbol game::get_winner() const
     symbol h = m_board.get(8);
     symbol i = m_board.get(9);
 
+    auto winner_symbol = symbol::BLANK;
+
     // win by horizontal
-    if(a != symbol::BLANK && a == b && b == c) return a;
-    if(d != symbol::BLANK && d == e && e == f) return d;
-    if(g != symbol::BLANK && g == h && h == i) return g;
+    if(a != symbol::BLANK && a == b && b == c) winner_symbol = a;
+    else if(d != symbol::BLANK && d == e && e == f) winner_symbol = d;
+    else if(g != symbol::BLANK && g == h && h == i) winner_symbol = g;
 
     // win by vertical
-    if(a != symbol::BLANK && a == d && d == g) return a;
-    if(b != symbol::BLANK && b == e && e == h) return b;
-    if(c != symbol::BLANK && c == f && f == i) return c;
+    else if(a != symbol::BLANK && a == d && d == g) winner_symbol = a;
+    else if(b != symbol::BLANK && b == e && e == h) winner_symbol = b;
+    else if(c != symbol::BLANK && c == f && f == i) winner_symbol = c;
 
     // win by diagonal
-    if(a != symbol::BLANK && a == e && e == i) return a;
-    if(c != symbol::BLANK && c == e && e == g) return c;
+    else if(a != symbol::BLANK && a == e && e == i) winner_symbol = a;
+    else if(c != symbol::BLANK && c == e && e == g) winner_symbol = c;
 
-    return symbol::BLANK;
+    switch(winner_symbol)
+    {
+        case symbol::X:
+            return game_state::X_WON;
+        case symbol::O:
+            return game_state::O_WON;
+        case symbol::BLANK:
+            return m_board.is_full() ? game_state::DRAW : game_state::IN_PROGRESS;
+    }
 }
 
 void game::make_turn(int index)
