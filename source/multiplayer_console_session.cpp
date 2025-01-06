@@ -1,5 +1,6 @@
 #include "multiplayer_console_session.h"
 #include <iostream>
+#include <limits>
 #include <string>
 #include "display_utils.h"
 #include <stdexcept>
@@ -25,8 +26,10 @@ void multiplayer_console_session::read_player_names()
     string name1, name2;
     cout << "Enter player 1 name: ";
     cin >> name1;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     cout << "Enter player 2 name: ";
     cin >> name2;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     m_session = session(name1, name2);
 }
 
@@ -61,10 +64,14 @@ void multiplayer_console_session::read_input()
         while(true)
         {
             cin >> input;
-            if(cin) break;
+            if(cin)
+            {
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
             cerr << "Not a number.\n";
             cin.clear();
-            cin.ignore();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         try
         {
