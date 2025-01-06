@@ -18,6 +18,11 @@ void display_utils::print_board(const board &b)
     print_bottom_bar();
 }
 
+void display_utils::print_score(std::string player1_name, int player1_score, std::string player2_name, int player2_score)
+{
+    cout << player1_name << ": " << player1_score << "    " << player2_name << ": " << player2_score << '\n';
+}
+
 void display_utils::print_top_bar()
 {
     cout << "+-----+-----+-----+\n"

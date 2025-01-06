@@ -13,7 +13,6 @@ class game
         game() = default;
         explicit game(symbol starting_player) : m_starting_player(starting_player), m_next_player(starting_player) {}
 
-        // returns symbol that won or blank if the game is not finished
         game_state get_game_state() const;
         void make_turn(int index);
         void reset();

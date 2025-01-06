@@ -13,4 +13,6 @@ add_executable(TicTacToe source/main.cpp
         source/game.h
         source/session.cpp
         source/session.h
-        source/game_state.h)
+        source/game_state.h
+        source/multiplayer_console_session.cpp
+        source/multiplayer_console_session.h)
