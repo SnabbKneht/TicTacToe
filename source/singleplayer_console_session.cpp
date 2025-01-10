@@ -19,9 +19,12 @@ void singleplayer_console_session::start()
         switch(m_session.get_next_player())
         {
             case symbol::X:
+                cout << "Your turn: \n";
                 read_input();
+                display_utils::clear_console();
                 break;
             case symbol::O:
+                display_utils::clear_console();
                 m_session.make_turn(ai::get_best_move(m_session.get_board(), symbol::O));
                 break;
             case symbol::BLANK:

@@ -1,10 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
-class menu
+struct menu
 {
-    public:
-        static void load();
+    static void load();
 };
 
 #endif //MENU_H

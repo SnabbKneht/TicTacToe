@@ -1,6 +1,7 @@
 #include "menu.h"
 #include <iostream>
 #include "multiplayer_console_session.h"
+#include "singleplayer_console_session.h"
 
 using std::cin;
 using std::cout;
@@ -13,7 +14,12 @@ void menu::load()
 
     char input = '\0';
     cin >> input;
-    if(input == 'm')
+    if(input == 's')
+    {
+        singleplayer_console_session session;
+        session.start();
+    }
+    else if(input == 'm')
     {
         multiplayer_console_session session;
         session.start();
