@@ -1,0 +1,20 @@
+# END
+
+1. if you can win in one move, do it
+
+2. if the opponent can win in one move, block him (optionally, if the opponent can win in one move in more than one way, do any move, because the game is lost anyway)
+
+3. if you can make a situation that results in at least two 2/3 complete lines (i.e. auto-win), do it
+
+4. if the opponent can make such situation, but only in one way, block him
+
+5. if the opponent can make such situation in more than one way and you can force a block (i.e. make a 2/3 complete line that will force the opponent to make a different move), do it
+
+# MIDDLE
+
+???
+
+# BEGINNING
+
+1. if you move first, check one of the corners
+2. if you move second and the opponent checked one of the corners, check the center 
