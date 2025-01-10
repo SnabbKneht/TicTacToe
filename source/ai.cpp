@@ -74,4 +74,6 @@ std::vector<int> ai::get_possible_moves_to_win_in_next_turn(const board &brd, sy
         if(get_possible_moves_to_win_immediately(new_brd, self).size() >= 2)
             result.push_back(i);
     }
+
+    return result;
 }
