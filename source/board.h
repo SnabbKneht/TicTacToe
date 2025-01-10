@@ -11,6 +11,8 @@ class board
         void set(int index, symbol s);
         symbol get(int index) const;
         bool is_full() const;
+        int count() const;
+        int get_random_unoccupied_corner() const;
 
     private:
         std::vector<symbol> contents = std::vector(9, symbol::BLANK);
