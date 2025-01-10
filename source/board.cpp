@@ -41,7 +41,7 @@ int board::count() const
     return result;
 }
 
-int board::get_random_unoccupied_corner() const
+vector<int> board::get_unoccupied_corners() const
 {
     vector<int> corners;
     if(get(1) == symbol::BLANK) corners.push_back(1);
@@ -49,7 +49,25 @@ int board::get_random_unoccupied_corner() const
     if(get(7) == symbol::BLANK) corners.push_back(7);
     if(get(9) == symbol::BLANK) corners.push_back(9);
 
-    if(corners.empty()) throw std::runtime_error("There are no unoccupied corners.");
+    return corners;
+}
 
-    return corners[my_random::random_index(corners.size())];
+std::vector<int> board::get_unoccupied_squares() const
+{
+    vector<int> squares;
+    for(int i = 1; i <= 9; ++i)
+    {
+        if(get(i) == symbol::BLANK)
+            squares.push_back(i);
+    }
+    return squares;
+}
+
+bool board::is_any_corner_occupied() const
+{
+    return
+        get(1) != symbol::BLANK ||
+        get(3) != symbol::BLANK ||
+        get(7) != symbol::BLANK ||
+        get(9) != symbol::BLANK;
 }

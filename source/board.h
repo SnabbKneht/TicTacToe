@@ -12,7 +12,9 @@ class board
         symbol get(int index) const;
         bool is_full() const;
         int count() const;
-        int get_random_unoccupied_corner() const;
+        std::vector<int> get_unoccupied_corners() const;
+        std::vector<int> get_unoccupied_squares() const;
+        bool is_any_corner_occupied() const;
 
     private:
         std::vector<symbol> contents = std::vector(9, symbol::BLANK);
